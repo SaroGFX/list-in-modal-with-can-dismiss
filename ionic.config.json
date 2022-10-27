@@ -1,0 +1,7 @@
+{
+  "name": "ListInModal with canDismiss",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
