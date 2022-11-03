@@ -69,9 +69,9 @@ const Home: React.FC = () => {
             <Virtuoso
               totalCount={200}
               itemContent={(index) => (
-                <IonItem style={{ height: "65px" }} detail={false} lines="full">
+                <IonItem style={{ height: "62px" }} lines="full">
                   <IonLabel>
-                    <h2>Title</h2>
+                    <h2>Title #{index}</h2>
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
