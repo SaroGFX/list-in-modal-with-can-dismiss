@@ -14,8 +14,12 @@ import {
   IonModal,
   IonButton,
   IonButtons,
+  IonItem,
+  IonLabel,
+  IonNote,
 } from "@ionic/react";
 import "./Home.css";
+import { Virtuoso } from "react-virtuoso";
 
 const Home: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -47,15 +51,12 @@ const Home: React.FC = () => {
 
   return (
     <IonPage ref={page} id="home-page">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
-        </IonToolbar>
-      </IonHeader>
       <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Inbox</IonTitle>
+          </IonToolbar>
+        </IonHeader>
 
         <IonHeader collapse="condense">
           <IonToolbar>
@@ -82,12 +83,23 @@ const Home: React.FC = () => {
               </IonButtons>
             </IonToolbar>
           </IonHeader>
+
           <IonContent>
-            <IonList>
-              {messages.map((m) => (
-                <MessageListItem key={m.id} message={m} />
-              ))}
-            </IonList>
+            <Virtuoso
+              totalCount={200}
+              itemContent={(index) => (
+                <IonItem style={{ height: "65px" }} detail={false} lines="full">
+                  <IonLabel>
+                    <h2>Title</h2>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua.
+                    </p>
+                  </IonLabel>
+                </IonItem>
+              )}
+            />
           </IonContent>
         </IonModal>
       </IonContent>
