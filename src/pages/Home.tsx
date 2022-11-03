@@ -1,22 +1,16 @@
-import MessageListItem from "../components/MessageListItem";
 import { useState, useRef, useEffect } from "react";
-import { Message, getMessages } from "../data/messages";
+
 import {
   IonContent,
   IonHeader,
-  IonList,
   IonPage,
-  IonRefresher,
-  IonRefresherContent,
   IonTitle,
   IonToolbar,
-  useIonViewWillEnter,
   IonModal,
   IonButton,
   IonButtons,
   IonItem,
   IonLabel,
-  IonNote,
 } from "@ionic/react";
 import "./Home.css";
 import { Virtuoso } from "react-virtuoso";
@@ -24,8 +18,6 @@ import { Virtuoso } from "react-virtuoso";
 const Home: React.FC = () => {
   const modal = useRef<HTMLIonModalElement>(null);
   const page = useRef(undefined);
-
-  const [messages, setMessages] = useState<Message[]>([]);
   const [presentingElement, setPresentingElement] = useState<
     HTMLElement | undefined
   >(undefined);
@@ -37,17 +29,6 @@ const Home: React.FC = () => {
   function dismiss() {
     modal.current?.dismiss();
   }
-
-  useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
-  });
-
-  const refresh = (e: CustomEvent) => {
-    setTimeout(() => {
-      e.detail.complete();
-    }, 3000);
-  };
 
   return (
     <IonPage ref={page} id="home-page">
